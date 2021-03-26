@@ -36,7 +36,7 @@ def info(datne):
 
     rindas = auto_tabula.find_all("tr")
 
-    for rinda in rindas[1:]:
+    for rinda in rindas[1:-1]:
         lauki = rinda.find_all("td")
         # for lauks in lauki:
         #     print(lauks)
@@ -67,13 +67,18 @@ def info(datne):
             auto["dzinejs"] = "Benzīns"
             auto["tilpums"] = tilpums            
         
-        auto["nobraukums"] = lauki[6].text.replace(" tūkst.", "")
+        if not lauki[6].text == "-":
+            auto["nobraukums"] = lauki[6].text.replace(" tūkst.", "")
+        else:
+            continue
+            # alternatīva auto["nobraukums"] = ""
+
         auto["cena"] = lauki[7].text.replace("  €", "").replace(",", "")
 
-        print(auto)
-        print("==========================================================================")
         dati.append(auto)
 
+    return dati
 
 
-info(LAPAS + "pirma_lapa.html")
+d1 = info(LAPAS + "pirma_lapa.html")
+print(d1)
