@@ -82,6 +82,8 @@ def info(datne):
             auto["nobraukums"] = lauki[6].text.replace(" tūkst.", "")
         else:
             continue
+            #auto["nobraukums"] = ""
+            #continue
             # alternatīva auto["nobraukums"] = ""
 
         auto["cena"] = lauki[7].text.replace("  €", "").replace(",", "")
@@ -109,7 +111,7 @@ def atvelkam_lapas(cik):
         time.sleep(1)
 
 
-#atvelkam_lapas(5)
+#atvelkam_lapas(200)
 
 def izvelkam_datus(cik):
     visi_dati = []
@@ -121,4 +123,4 @@ def izvelkam_datus(cik):
     
     saglaba_datus(visi_dati)
 
-izvelkam_datus(5)
+izvelkam_datus(200)
