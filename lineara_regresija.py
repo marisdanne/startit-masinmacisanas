@@ -111,9 +111,9 @@ def main():
     # Labāks algoritms
     modelis = ensemble.GradientBoostingRegressor(n_estimators = 400, max_depth = 5, min_samples_split = 2, learning_rate = 0.1, loss = 'ls')
 
-    modelis, rezultats = trenet_modeli(modelis, X_train, y_train, X_test)
+    #modelis, rezultats = trenet_modeli(modelis, X_train, y_train, X_test)
     # # Ja gribam saglabāt modeli datnē
-    # modelis, rezultats = trenet_modeli(modelis, X_train, y_train, X_test, "modelis.pickle")
+    modelis, rezultats = trenet_modeli(modelis, X_train, y_train, X_test, "ss-modelis.pickle")
     modela_kvalitate(y_test, rezultats)
 
     # Lietojam modeli, lai prognozetu rezultātu
