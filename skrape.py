@@ -37,9 +37,23 @@ def info(datne):
     rindas = auto_tabula.find_all("tr")
 
     for rinda in rindas[1:]:
-        print(rinda)
-        print("========================")
-        print("========================")
+        lauki = rinda.find_all("td")
+        # for lauks in lauki:
+        #     print(lauks)
+        #     print("===================================")
+
+        auto = {}
+
+        auto["saite"] = lauki[1].find("a")["href"]
+        auto["bilde"] = lauki[1].find("img")["src"]
+        auto["apraksts"] = lauki[2].find("a").text.replace("\n", " ")
+
+        marka = lauki[3].text
+
+        print(marka)
+        
+        # print(auto)
+        exit()
 
 
 
