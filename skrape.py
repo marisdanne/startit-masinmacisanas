@@ -89,14 +89,14 @@ def info(datne):
 
     return dati
 
-
-d1 = info(LAPAS + "pirma_lapa.html")
-print(d1)
-
 def saglaba_datus(dati):
-    with open(DATI + 'ss_auto.csv', 'w', encoding='UTF-8') as f:
+    with open(DATI + 'ss_auto.csv', 'w', encoding='UTF-8', newline="") as f:
         kolonu_nosaukumi = ['razotajs', 'modelis', 'marka', 'gads', 'dzinejs', 'tilpums', 'nobraukums', 'cena', 'apraksts', 'bilde', 'saite']
         w = csv.DictWriter(f, fieldnames = kolonu_nosaukumi)
         w.writeheader()
         for auto in dati:
             w.writerow(auto)
+
+d1 = info(LAPAS + "pirma_lapa.html")
+
+saglaba_datus(d1)
