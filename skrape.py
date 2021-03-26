@@ -48,11 +48,16 @@ def info(datne):
         auto["bilde"] = lauki[1].find("img")["src"]
         auto["apraksts"] = lauki[2].find("a").text.replace("\n", " ")
 
-        lauki[3].br.replace_with('!')
+        if lauki[3].br:
+            lauki[3].br.replace_with('!')
+            auto["marka"] = lauki[3].text.replace("!", " ")
+            auto["razotajs"] = lauki[3].text.split("!")[0]
+            auto["modelis"] = lauki[3].text.split("!")[1]
+        else:
+            auto["marka"] = lauki[3].text
+            auto["razotajs"] = lauki[3].text
+            auto["modelis"] = lauki[3].text
 
-        auto["marka"] = lauki[3].text.replace("!", " ")
-        auto["razotajs"] = lauki[3].text.split("!")[0]
-        auto["modelis"] = lauki[3].text.split("!")[1]
         auto["gads"] = lauki[4].text
 
         tilpums = lauki[5].text
@@ -62,7 +67,10 @@ def info(datne):
             auto["tilpums"] = tilpums[:-1]
         elif tilpums[-1] == "H":
             auto["dzinejs"] = "Hibrīds"
-            auto["tilpums"] = tilpums[:-1]            
+            auto["tilpums"] = tilpums[:-1]
+        elif tilpums[-1] == "E":
+            auto["dzinejs"] = "Elektro"
+            auto["tilpums"] = 0            
         else:
             auto["dzinejs"] = "Benzīns"
             auto["tilpums"] = tilpums            
