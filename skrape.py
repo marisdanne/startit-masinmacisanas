@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup as bs
 import csv
+import time
 
 
 URL = 'https://www.ss.lv/lv/transport/cars/today-5/sell/'
@@ -97,6 +98,16 @@ def saglaba_datus(dati):
         for auto in dati:
             w.writerow(auto)
 
-d1 = info(LAPAS + "pirma_lapa.html")
+#d1 = info(LAPAS + "pirma_lapa.html")
+#saglaba_datus(d1)
 
-saglaba_datus(d1)
+def atvelkam_lapas(cik):
+    for i in range(1, cik + 1):
+        url = "{}page{}.html".format(URL, i)
+        datne = "{}page{}.html".format(LAPAS, i)
+        saglaba(url, datne)
+        time.sleep(1)
+
+
+#atvelkam_lapas(5)
+
