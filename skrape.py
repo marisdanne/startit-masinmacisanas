@@ -111,3 +111,14 @@ def atvelkam_lapas(cik):
 
 #atvelkam_lapas(5)
 
+def izvelkam_datus(cik):
+    visi_dati = []
+    for i in range(1, cik + 1):
+        datne = "{}page{}.html".format(LAPAS, i)
+
+        datnes_dati = info(datne)
+        visi_dati += datnes_dati # visi_dati = visi_dati + datnes_dati
+    
+    saglaba_datus(visi_dati)
+
+izvelkam_datus(5)
