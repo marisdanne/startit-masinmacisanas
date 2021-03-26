@@ -67,17 +67,12 @@ def info(datne):
             auto["dzinejs"] = "Benzīns"
             auto["tilpums"] = tilpums            
         
-        nobraukums = lauki[6]
-        
-        print(nobraukums)        
+        auto["nobraukums"] = lauki[6].text.replace(" tūkst.", "")
+        auto["cena"] = lauki[7].text.replace("  €", "").replace(",", "")
 
-        #print(auto)
-        exit()
-
-
-
-
-
+        print(auto)
+        print("==========================================================================")
+        dati.append(auto)
 
 
 
